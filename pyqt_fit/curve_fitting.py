@@ -374,17 +374,16 @@ class CurveFitting(object):
         if use_derivs:
             self.df = df
 
-        cd = 1 if col_deriv else 0
-        optim = optimize.leastsq(f, p0, full_output=1, Dfun=df,
-                                 col_deriv=cd, *self.lsq_args, **self.lsq_kwords)
-        popt, pcov, infodict, mesg, ier = optim
+        cd = True if col_deriv else False
+        popt, pcov, infodict, mesg, ier = optimize.leastsq(f, p0, full_output=True, Dfun=df,
+                                                           col_deriv=cd, *self.lsq_args, **self.lsq_kwords)
         #infodict['est_jacobian'] = not use_derivs
 
         if fix_params:
             p_save[change_params] = popt
             popt = p_save
 
-        if not ier in [1, 2, 3, 4]:
+        if ier not in [1, 2, 3, 4]:
             raise RuntimeError("Unable to determine number of fit parameters. "
                                "Error returned by scipy.optimize.leastsq:\n%s"
                                % (mesg,))
