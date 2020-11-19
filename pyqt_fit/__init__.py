@@ -12,7 +12,7 @@ __all__ = ['bootstrap', 'plot_fit',
 from . import functions, residuals
 from . import bootstrap, plot_fit, curve_fitting, nonparam_regression
 from .curve_fitting import CurveFitting
-from path import Path
+from pathlib import Path
 
-with (Path(__file__).dirname() / 'version.txt').open() as f:
+with (Path(__file__).parent / 'version.txt').open() as f:
     __version__ = f.read().strip()

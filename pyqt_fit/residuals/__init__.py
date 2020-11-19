@@ -2,7 +2,7 @@ __author__ = "Pierre Barbier de Reuille <pierre.barbierdereuille@gmail.com>"
 
 from ..utils import namedtuple
 from .. import loader
-from path import Path
+from pathlib import Path
 import os
 
 _fields = ['name', 'description', 'invert', 'Dfun', '__call__']

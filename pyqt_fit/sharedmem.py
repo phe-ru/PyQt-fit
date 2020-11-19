@@ -31,7 +31,7 @@ CTYPES_FLOAT_LIST = [ctypes.c_float,
                      ctypes.c_longdouble
                      ]
 
-CTYPES_TO_NUMPY = {ctypes.c_char: np.dtype(np.character),
+CTYPES_TO_NUMPY = {ctypes.c_char: np.dtype('S1'),
                    ctypes.c_wchar: np.dtype(np.unicode),
                    }
 

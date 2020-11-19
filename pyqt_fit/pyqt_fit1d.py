@@ -8,7 +8,7 @@ from qtpy.QtCore import Slot, Qt
 from qtpy.QtWidgets import QMessageBox
 import matplotlib
 from numpy import nan, array, ma, arange
-from path import Path
+from pathlib import Path
 from .curve_fitting import CurveFitting
 import sys
 from pylab import close as close_figure
@@ -103,7 +103,7 @@ class ParametersModel(QtCore.QAbstractTableModel):
 class QtFitDlg(QtWidgets.QDialog):
     def __init__(self, *args, **kwords):
         QtWidgets.QDialog.__init__(self, *args, **kwords)
-        p = (Path(__file__).dirname() / 'qt_fit.ui').abspath()
+        p = (Path(__file__).parent / 'qt_fit.ui').resolve()
         uic.loadUi(p, self)
         if sys.platform != "darwin":
             self.selectInputFile.setMaximumWidth(32)
